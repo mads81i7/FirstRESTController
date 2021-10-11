@@ -12,13 +12,6 @@ namespace ItemsManagerTest
         public void GetAllTest()
         {
             IItemsManager manager = new ItemsManager();
-            manager.DeleteAll();
-
-            Item item1 = new Item("item", 1, 1);
-            Item item2 = new Item("item", 1, 1);
-
-            manager.Add(item1);
-            manager.Add(item2);
 
             int itemCount = manager.GetAll("").Count;
 
@@ -26,9 +19,16 @@ namespace ItemsManagerTest
         }
 
         [TestMethod]
-        public void FailThis()
+        public void GetByIdTest()
         {
-            Assert.Fail();
+            IItemsManager manager = new ItemsManager();
+            Item item = new Item {Itemquality = 5, Name = "Id 3", Quantity = 7};
+
+            manager.Add(item);
+
+            Item TestItem = manager.GetById(3);
+
+            Assert.AreEqual(item, TestItem);
         }
     }
 }
